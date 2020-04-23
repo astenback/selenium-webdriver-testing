@@ -4,6 +4,7 @@ import static org.hamcrest.core.IsNot.not;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -33,19 +34,26 @@ public class GoogleMapsNavigation {
     private static Map<String, Object> vars;
     static JavascriptExecutor js;
 
+    public static FirefoxOptions getFirefoxOptions() {
+        FirefoxOptions options = new FirefoxOptions();
+        options.addArguments("--headless");
+        return options;
+    }
+
     @BeforeTest
     public void setUp() {
 
         //System.setProperty("webdriver.chrome.driver", "/Users/alans/tools/chromedriver");
         System.setProperty("webdriver.gecko.driver", "/Users/alans/tools/geckodriver");
 
-        driver = new FirefoxDriver();
+        driver = new FirefoxDriver(getFirefoxOptions());
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
     }
+
     @AfterTest
     public void tearDown() {
         driver.quit();
@@ -59,7 +67,7 @@ public class GoogleMapsNavigation {
         //System.setProperty("webdriver.chrome.driver", "/Users/alans/tools/chromedriver");
         System.setProperty("webdriver.gecko.driver", "/Users/alans/tools/geckodriver");
 
-        driver = new FirefoxDriver();
+        driver = new FirefoxDriver(getFirefoxOptions());
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
 
