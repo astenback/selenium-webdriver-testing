@@ -1,0 +1,44 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name = "Google Maps Navigation">
+
+    <test name="Testing Miami to Seattle">
+        <classes>
+            <class name="GoogleMapsNavigation">
+                <methods>
+                    <parameter name="startingPoint" value="Miami, Florida"></parameter>
+                    <parameter name="destination" value="Seattle, Washington"></parameter>
+
+                    <include name="startingPointToDestination"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Testing New York to LA">
+        <classes>
+            <class name="GoogleMapsNavigation">
+                <methods>
+                    <parameter name="startingPoint" value="New York City, New York"></parameter>
+                    <parameter name="destination" value="Los Angeles, California"></parameter>
+
+                    <include name="startingPointToDestination"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Testing Portland to San Diego">
+        <classes>
+            <class name="GoogleMapsNavigation">
+                <methods>
+                    <parameter name="startingPoint" value="Portland, Maine"></parameter>
+                    <parameter name="destination" value="San Diego, California"></parameter>
+
+                    <include name="startingPointToDestination"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
