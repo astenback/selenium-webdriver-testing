@@ -28,10 +28,10 @@ import java.util.concurrent.TimeUnit;
 
 public class GoogleMapsNavigation {
 
-    private WebDriver driver;
+    private static WebDriver driver;
 
-    private Map<String, Object> vars;
-    JavascriptExecutor js;
+    private static Map<String, Object> vars;
+    static JavascriptExecutor js;
 
     @BeforeTest
     public void setUp() {
@@ -50,11 +50,20 @@ public class GoogleMapsNavigation {
     public void tearDown() {
         driver.quit();
     }
+
     @Test
     @Parameters ({"startingPoint", "destination"})
-    public void startingPointToDestination(@Optional ("New York City, New York") String startingPoint,
+    public static void startingPointToDestination(@Optional ("New York City, New York") String startingPoint,
                                          @Optional ("Los Angeles, California") String destination) {
 
+        //System.setProperty("webdriver.chrome.driver", "/Users/alans/tools/chromedriver");
+        System.setProperty("webdriver.gecko.driver", "/Users/alans/tools/geckodriver");
+
+        driver = new FirefoxDriver();
+        js = (JavascriptExecutor) driver;
+        vars = new HashMap<String, Object>();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         driver.get("https://www.google.com/maps");
         driver.manage().window().setSize(new Dimension(1024, 800));
@@ -64,6 +73,15 @@ public class GoogleMapsNavigation {
         driver.findElement(By.cssSelector("#sb_ifc51 > .tactile-searchbox-input")).sendKeys(startingPoint);
         driver.findElement(By.cssSelector("#sb_ifc51 > .tactile-searchbox-input")).sendKeys(Keys.ENTER);
         driver.findElement(By.cssSelector("#section-directions-trip-title-0 > span")).click();
+
+        driver.quit();
+    }
+
+    public static void main (String args[]){
+
+        GoogleMapsNavigation.startingPointToDestination("Miami, Florida", "Seattle, Washington");
+        GoogleMapsNavigation.startingPointToDestination("New York City, New York", "Los Angeles, California");
+        GoogleMapsNavigation.startingPointToDestination("Portland, Maine", "San Diego, California");
 
     }
 }
