@@ -30,8 +30,8 @@ import java.util.concurrent.TimeUnit;
 public class GoogleMapsNavigation {
 
     private static WebDriver driver;
-
     private static Map<String, Object> vars;
+
     static JavascriptExecutor js;
 
     public static FirefoxOptions getFirefoxOptions() {
@@ -60,14 +60,20 @@ public class GoogleMapsNavigation {
     }
 
     @Test
-    @Parameters ({"startingPoint", "destination"})
+    @Parameters ({"startingPoint", "destination", "headless"})
     public static void startingPointToDestination(@Optional ("New York City, New York") String startingPoint,
-                                         @Optional ("Los Angeles, California") String destination) {
+                                                  @Optional ("Los Angeles, California") String destination,
+                                                  @Optional ("true") String headless) {
 
         //System.setProperty("webdriver.chrome.driver", "/Users/alans/tools/chromedriver");
         System.setProperty("webdriver.gecko.driver", "/Users/alans/tools/geckodriver");
 
-        driver = new FirefoxDriver(getFirefoxOptions());
+        if (headless == "true"){
+            driver = new FirefoxDriver(getFirefoxOptions());
+        }else{
+            driver = new FirefoxDriver();
+        }
+
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
 
@@ -87,9 +93,11 @@ public class GoogleMapsNavigation {
 
     public static void main (String args[]){
 
-        GoogleMapsNavigation.startingPointToDestination("Miami, Florida", "Seattle, Washington");
-        GoogleMapsNavigation.startingPointToDestination("New York City, New York", "Los Angeles, California");
-        GoogleMapsNavigation.startingPointToDestination("Portland, Maine", "San Diego, California");
+        String headless = "true";
+
+        GoogleMapsNavigation.startingPointToDestination("Miami, Florida", "Seattle, Washington", headless);
+        GoogleMapsNavigation.startingPointToDestination("New York City, New York", "Los Angeles, California", headless);
+        GoogleMapsNavigation.startingPointToDestination("Portland, Maine", "San Diego, California", headless);
 
     }
 }
