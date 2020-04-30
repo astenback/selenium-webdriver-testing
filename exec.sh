@@ -4,4 +4,10 @@ CLASSPATH=`cat classpath.txt`
 java -cp \
 "$CLASSPATH"\
 org.testng.TestNG \
-src/test/java/GoogleMapsNavigation.java
+src/test/java/GoogleMapsNavigationFirefox.java
+
+# Not headless yet
+java -cp \
+"$CLASSPATH"\
+org.testng.TestNG \
+src/test/java/GoogleMapsNavigationChrome.java

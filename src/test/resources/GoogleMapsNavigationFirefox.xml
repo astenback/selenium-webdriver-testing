@@ -4,7 +4,7 @@
 
     <test name="Testing Miami to Seattle">
         <classes>
-            <class name="GoogleMapsNavigation">
+            <class name="GoogleMapsNavigationFirefox">
                 <methods>
                     <include name="startingPointToDestination"/>
 
@@ -18,7 +18,7 @@
 
     <test name="Testing New York to LA">
         <classes>
-            <class name="GoogleMapsNavigation">
+            <class name="GoogleMapsNavigationFirefox">
                 <methods>
                     <include name="startingPointToDestination"/>
 
@@ -32,7 +32,7 @@
 
     <test name="Testing Portland to San Diego">
         <classes>
-            <class name="GoogleMapsNavigation">
+            <class name="GoogleMapsNavigationFirefox">
                 <methods>
                     <include name="startingPointToDestination"/>
 
