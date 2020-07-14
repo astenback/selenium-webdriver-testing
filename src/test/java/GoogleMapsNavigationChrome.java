@@ -44,7 +44,7 @@ public class GoogleMapsNavigationChrome {
     @Parameters ({"startingPoint", "destination", "headless"})
     public static void startingPointToDestination(@Optional ("New York City, New York") String startingPoint,
                                                   @Optional ("Los Angeles, California") String destination,
-                                                  @Optional ("true") String headless) {
+                                                  @Optional ("false") String headless) {
 
         System.setProperty("webdriver.chrome.driver", "/Users/alans/tools/chromedriver");
 

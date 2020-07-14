@@ -26,7 +26,7 @@ public class GoogleMapsNavigationFirefox {
 
     @BeforeTest
     @Parameters ({"headless"})
-    public void setUp(@Optional ("true") String headless) {
+    public void setUp(@Optional ("false") String headless) {
 
         System.setProperty("webdriver.gecko.driver", "/Users/alans/tools/geckodriver");
 
