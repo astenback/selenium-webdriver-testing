@@ -52,7 +52,7 @@ public class GoogleMapsNavigationFirefox {
     @Parameters ({"startingPoint", "destination", "headless"})
     public static void startingPointToDestination(@Optional ("New York City, New York") String startingPoint,
                                                   @Optional ("Los Angeles, California") String destination,
-                                                  @Optional ("true") String headless) {
+                                                  @Optional ("false") String headless) {
 
         //System.setProperty("webdriver.chrome.driver", "/Users/alans/tools/chromedriver");
         System.setProperty("webdriver.gecko.driver", "/Users/alans/tools/geckodriver");
@@ -82,7 +82,7 @@ public class GoogleMapsNavigationFirefox {
 
     public static void main (String args[]){
 
-        String headless = "true";
+        String headless = "false";
 
         GoogleMapsNavigationFirefox.startingPointToDestination("Miami, Florida", "Seattle, Washington", headless);
         GoogleMapsNavigationFirefox.startingPointToDestination("New York City, New York", "Los Angeles, California", headless);
